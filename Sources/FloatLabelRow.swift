@@ -30,26 +30,24 @@ import Eureka
 
 //MARK: FloatLabelCell
 open class _FloatLabelCell<T>: Cell<T>, UITextFieldDelegate, TextFieldCell where T: Equatable, T: InputTypeInitiable {
-    
+    @IBOutlet public var floatLabelTextField: FloatLabelTextField! {
+        didSet {
+            floatTextField.translatesAutoresizingMaskIntoConstraints = false
+            floatTextField.font = .preferredFont(forTextStyle: .body)
+            floatTextField.titleFont = .boldSystemFont(ofSize: 11.0)
+            floatTextField.clearButtonMode = .whileEditing
+        }
+    }
     public var textField: UITextField! { return floatLabelTextField }
     
     required public init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        self.floatLabelTextField = FloatLabelTextField()
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
     required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
-    
-    lazy public var floatLabelTextField: FloatLabelTextField = { [unowned self] in
-        let floatTextField = FloatLabelTextField()
-        floatTextField.translatesAutoresizingMaskIntoConstraints = false
-        floatTextField.font = .preferredFont(forTextStyle: .body)
-        floatTextField.titleFont = .boldSystemFont(ofSize: 11.0)
-        floatTextField.clearButtonMode = .whileEditing
-        return floatTextField
-        }()
-    
     
     open override func setup() {
         super.setup()
