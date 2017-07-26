@@ -32,10 +32,10 @@ import Eureka
 open class _FloatLabelCell<T>: Cell<T>, UITextFieldDelegate, TextFieldCell where T: Equatable, T: InputTypeInitiable {
     @IBOutlet public var floatLabelTextField: FloatLabelTextField! {
         didSet {
-            floatTextField.translatesAutoresizingMaskIntoConstraints = false
-            floatTextField.font = .preferredFont(forTextStyle: .body)
-            floatTextField.titleFont = .boldSystemFont(ofSize: 11.0)
-            floatTextField.clearButtonMode = .whileEditing
+            floatLabelTextField.translatesAutoresizingMaskIntoConstraints = false
+            floatLabelTextField.font = .preferredFont(forTextStyle: .body)
+            floatLabelTextField.titleFont = .boldSystemFont(ofSize: 11.0)
+            floatLabelTextField.clearButtonMode = .whileEditing
         }
     }
     public var textField: UITextField! { return floatLabelTextField }
